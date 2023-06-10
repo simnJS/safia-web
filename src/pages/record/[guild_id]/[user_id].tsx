@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import styles from '../../../styles/components/Card.module.css'
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 interface DiscordUser {
   id: string;
   username: string;
@@ -69,7 +71,7 @@ export default function Record() {
   if (jsonSanctionData === null || jsonMemberData === null) {
     return (
         <section className={styles.background} id="no_data">
-        <div className="flex flex-col items-center justify-center h-screen">
+        <div className="flex flex-col items-center justify-center">
             <div className="spinner"></div>
         </div>
         </section>
@@ -78,7 +80,8 @@ export default function Record() {
 
   return (
     <section className={styles.background} id="features">
-    <div className="flex flex-col items-center justify-center h-screen">
+    <Header />
+    <div className="flex flex-col items-center justify-center">
       <h1 className="text-3xl font-bold mb-8" style={{ color: 'white' }}> Casier de {(JSON.parse(jsonMemberData) as jsonMemberData).username} </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 max-w-4xl w-full gap-6">
         {JSON.parse(jsonSanctionData).map((sanction: any) => (
@@ -140,6 +143,7 @@ export default function Record() {
         ))}
       </div>
     </div>
+    <Footer />
     </section>
   )
 }

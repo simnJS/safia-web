@@ -20,9 +20,20 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, .3);
 }
 
 .header a {
     --width: 155px;
     --height: 40px;
+}
+
+@media screen and (max-width: 760px) {
+    .header {
+        padding: 0 1rem;
+    }
+
+    .h1 {
+        display: none;
+    }
 }

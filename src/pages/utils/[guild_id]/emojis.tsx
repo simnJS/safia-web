@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import styles from '../../../styles/components/Card.module.css'
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 interface EmojiData {
   name: string;
@@ -46,7 +48,8 @@ export default function Emojis() {
 
   return (
     <section className={styles.background} id="features">
-    <div className="flex flex-col items-center justify-center h-screen">
+        <Header />
+    <div className="flex flex-col items-center justify-center py-16">
       <h1 className="text-3xl font-bold mb-8" style={{ color: 'white' }}>
         Voici la liste des emojis du serveur
       </h1>
@@ -82,6 +85,7 @@ export default function Emojis() {
         ))}
       </div>
     </div>
+    <Footer />
     </section>
   )
 }

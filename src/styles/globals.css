@@ -89,3 +89,21 @@ a:not(.footer-link):hover::before {
     }
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: #404347;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #3b4288;
+    border-radius: 25px;
+  }
+  
+  :root {
+    scrollbar-width: thin;
+  }
+  
+  span.footer{
+    color: #c500c5;
+    text-decoration: underline;
+  }

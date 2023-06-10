@@ -95,3 +95,21 @@ section.features {
   .container .box:hover p {
     color: #fff;
   }
+
+@media screen and (max-width: 1260px) {
+.features .container {
+    grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .features .container {
+      grid-template-columns: 1fr;
+      max-width: 90%;
+    }
+  
+    .features .container .box {
+      padding: 100px 20px 60px;
+      width: fit-content;
+    }
+} 
