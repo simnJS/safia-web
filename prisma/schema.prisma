@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Guild {
+  id         String    @id @default(cuid())
+  guildId    String    @unique
+  members    Member[]
+  raidMode   Boolean   @default(false)
+  logChannel String?
+  logStatus  Boolean   @default(false)
+  automodStatus    Boolean   @default(false)
+  automodLevel Int     @default(0)
+  isPremium  Boolean   @default(false)
+}
+
+model Member {
+  id       String   @id @default(cuid())
+  memberId String
+  username String
+  guild    Guild    @relation(fields: [guildId], references: [id])
+  guildId  String
+  level    Int      @default(1)
+  xp       Int      @default(0)
+  sanctions Sanction[]
+  advertCount Int    @default(0)
+}
+
+model Sanction {
+  id         String    @id @default(cuid())
+  type       String
+  duration   Int?
+  reason     String?
+  moderator  String?
+  date       DateTime  @default(now())
+  memberId   String
+  member     Member    @relation(fields: [memberId], references: [id])
+}

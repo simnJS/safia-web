@@ -1,0 +1,24 @@
+/* Footer.module.css */
+
+.footer {
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #202225;
+    /* border-radius: 0px 0px 25px 25px; */
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.678);
+  }
+  
+  .footer_link {
+    --width: 155px;
+    --height: 40px;
+  }
+  
+  .credit {
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 700;
+    font-style: italic;
+  }
+  

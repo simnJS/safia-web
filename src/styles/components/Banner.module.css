@@ -1,0 +1,15 @@
+div.banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    height: 150px;
+  
+    text-align: center;
+    
+    background-color: #202225;
+  }
+  
+  .banner h3 {
+    font-size: 2rem;
+  }
