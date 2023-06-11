@@ -59,15 +59,6 @@ export default function Record() {
                     await fetchDiscordUser(data.jsonSanctionData);
 
                     document.title = `Casier de ${JSON.parse(data.jsonMemberData).username} | Safia`;
-                    const metaDescription = `Casier de ${JSON.parse(data.jsonMemberData).username} - Votre description personnalisée ici`;
-                    const metaTags = document.getElementsByTagName('meta');
-
-                    for (let i = 0; i < metaTags.length; i++) {
-                        if (metaTags[i].getAttribute('name') === 'description') {
-                          metaTags[i].setAttribute('content', metaDescription);
-                          break;
-                        }
-                    }
 
                 } else {
                     console.error(data.error);
