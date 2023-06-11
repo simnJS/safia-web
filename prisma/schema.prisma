@@ -17,6 +17,9 @@ model Guild {
   automodStatus    Boolean   @default(false)
   automodLevel Int     @default(0)
   isPremium  Boolean   @default(false)
+  joinRoleStatus   Boolean   @default(false)
+  joinRoleId   String?
+
 }
 
 model Member {
@@ -28,7 +31,6 @@ model Member {
   level    Int      @default(1)
   xp       Int      @default(0)
   sanctions Sanction[]
-  advertCount Int    @default(0)
 }
 
 model Sanction {

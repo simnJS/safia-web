@@ -1,13 +1,12 @@
-/* Footer.module.css */
-
 .footer {
     height: 72px;
     display: flex;
     align-items: center;
     background-color: #202225;
     padding: 0 3rem;
-    /* border-radius: 0px 0px 25px 25px; */
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.678);
+    margin-top: auto;
+    width: 100%; /* Add this line to make the footer extend to the full width */
   }
   
   .footer_link {
@@ -21,16 +20,15 @@
     font-weight: 700;
     font-style: italic;
   }
-
-@media screen and (max-width: 760px) {
-.footer {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    grid-gap: .5rem;
-    padding: 1rem;
-    height: fit-content;
+  
+  @media screen and (max-width: 760px) {
+    .footer {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      grid-gap: .5rem;
+      padding: 1rem;
+      height: fit-content;
     }
-}
-
+  }
   

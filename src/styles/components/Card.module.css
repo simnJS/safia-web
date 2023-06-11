@@ -1,5 +1,13 @@
 .background {
-  background-color: #202225;
-}
+    background-color: #202225;
+    min-height: 100vh;
+    /* Add other background styles */
+  }
 
-    
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  

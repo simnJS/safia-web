@@ -30,9 +30,18 @@ export default function Record() {
                     `/api/record?guild_id=${router.query.guild_id}&user_id=${router.query.user_id}`
                 );
                 if (response.status === 404) {
-                    setJsonSanctionData("No data found");
-                    setJsonMemberData("No data found");
-                    return;
+                    return (
+                        <section className={styles.background} id="features">
+                            <Header />
+                            <div className="flex flex-col items-center justify-center h-screen">
+                                <h1 className="text-3xl font-bold mb-8" style={{ color: 'white' }}>
+                                    Aucune sanction trouvée
+                                </h1>
+                            </div>
+                            <Footer />
+                        </section>
+
+                    )
                 }
 
                 console.log(response.status);
@@ -47,6 +56,7 @@ export default function Record() {
                     setJsonSanctionData(data.jsonSanctionData);
                     setJsonMemberData(data.jsonMemberData);
                     await fetchDiscordUser(data.jsonSanctionData);
+
                 } else {
                     console.error(data.error);
                 }
@@ -89,64 +99,67 @@ export default function Record() {
 
     return (
         <section className={styles.background} id="features">
-            <Header />
-            <div className="flex flex-col items-center justify-center">
-                <h1 className="text-3xl font-bold mb-8" style={{ color: 'white' }}>
-                    Casier de {(JSON.parse(jsonMemberData) as jsonMemberData).username}
-                </h1>
-                <div className="grid grid-cols-1 md:grid-cols-2 max-w-4xl w-full gap-6">
-                    {JSON.parse(jsonSanctionData).map((sanction: any) => (
-                        <div
-                            key={sanction.id}
-                            className="bg-gray-900 rounded-xl shadow-md w-full overflow-hidden"
-                        >
-                            <div className="px-4 py-3 text-gray-100 font-bold border-b border-gray-800 text-center uppercase">
-                                <p>{sanction.type}</p>
+            <div className={styles.container}>
+                <Header />
+                <div className="flex flex-col items-center justify-center py-16">
+                    <h1 className="text-3xl font-bold mb-8" style={{ color: 'white' }}>
+                        Casier de {JSON.parse(jsonMemberData).username}
+                    </h1>
+                    <div className="grid grid-cols-1 md:grid-cols-2 max-w-4xl w-full gap-6">
+                        {JSON.parse(jsonSanctionData).map((sanction: any) => (
+                            <div
+                                key={sanction.id}
+                                className="bg-gray-900 rounded-xl shadow-md w-full overflow-hidden"
+                            >
+                                <div className="px-4 py-3 text-gray-100 font-bold border-b border-gray-800 text-center uppercase">
+                                    <p>{sanction.type}</p>
+                                </div>
+                                <div className="p-4 grid grid-cols-1 gap-3">
+                                    <div>
+                                        <p className="text-gray-500 text-xs uppercase font-bold mb-1">Durée&nbsp;:</p>
+                                        <p className="text-gray-100 text-base font-semibold">
+                                            {sanction.duration ?? 'Aucune durée spécifiée'}
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p className="text-gray-500 text-xs uppercase font-bold mb-1">Raison&nbsp;:</p>
+                                        <p className="text-gray-100 text-base font-semibold">
+                                            {sanction.reason ?? 'Aucune raison spécifiée'}
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p className="text-gray-500 text-xs uppercase font-bold mb-1">
+                                            Sanctionné le&nbsp;:
+                                        </p>
+                                        <p className="text-gray-100 text-base font-semibold">
+                                            {new Date(sanction.date).toLocaleDateString('fr-FR', {
+                                                minute: 'numeric',
+                                                hour: 'numeric',
+                                                day: 'numeric',
+                                                month: 'long',
+                                                year: 'numeric',
+                                            })}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="bg-black bg-opacity-50 px-4 py-3 flex items-center justify-between gap-2">
+                                    <p className="text-gray-500 text-xs uppercase font-bold">Averti par&nbsp;:</p>
+                                    <div className="flex items-center justify-start gap-2">
+                                        <p className="text-gray-100 text-sm font-semibold">{userName}</p>
+                                        <img
+                                            src={iconUrl}
+                                            alt={userName}
+                                            className="rounded-full object-cover h-6 w-6"
+                                        />
+                                    </div>
+                                </div>
                             </div>
-                            <div className="p-4 grid grid-cols-1 gap-3">
-                                <div>
-                                    <p className="text-gray-500 text-xs uppercase font-bold mb-1">Durée&nbsp;:</p>
-                                    <p className="text-gray-100 text-base font-semibold">
-                                        {sanction.duration ?? 'Aucune durée spécifiée'}
-                                    </p>
-                                </div>
-                                <div>
-                                    <p className="text-gray-500 text-xs uppercase font-bold mb-1">Raison&nbsp;:</p>
-                                    <p className="text-gray-100 text-base font-semibold">
-                                        {sanction.reason ?? 'Aucune raison spécifiée'}
-                                    </p>
-                                </div>
-                                <div>
-                                    <p className="text-gray-500 text-xs uppercase font-bold mb-1">
-                                        Sanctionné le&nbsp;:
-                                    </p>
-                                    <p className="text-gray-100 text-base font-semibold">
-                                        {new Date(sanction.date).toLocaleDateString('fr-FR', {
-                                            minute: 'numeric',
-                                            hour: 'numeric',
-                                            day: 'numeric',
-                                            month: 'long',
-                                            year: 'numeric',
-                                        })}
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="bg-black bg-opacity-50 px-4 py-3 flex items-center justify-between gap-2">
-                                <p className="text-gray-500 text-xs uppercase font-bold">Averti par&nbsp;:</p>
-                                <div className="flex items-center justify-start gap-2">
-                                    <p className="text-gray-100 text-sm font-semibold">{userName}</p>
-                                    <img
-                                        src={iconUrl}
-                                        alt={userName}
-                                        className="rounded-full object-cover h-6 w-6"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
+                <Footer />
             </div>
-            <Footer />
         </section>
     );
+
 }
