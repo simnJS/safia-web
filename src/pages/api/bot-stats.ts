@@ -25,10 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           const guildData = await guildResponse.json();
           totalMembers += guildData.approximate_member_count; // Utilisez la propriété approximate_member_count pour obtenir le nombre total d'utilisateurs
           
-          console.log(`Guild: ${guildId}, Member Count: ${guildData.approximate_member_count}`);
         }
-
-        console.log(`Number of Guilds: ${numGuilds}, Total Members: ${totalMembers}`);
 
         res.status(200).json({
           numGuilds,
