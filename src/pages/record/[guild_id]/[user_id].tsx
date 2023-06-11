@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import styles from '../../../styles/components/Card.module.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Head from 'next/head';
 
 interface DiscordUser {
     id: string;
@@ -56,6 +57,17 @@ export default function Record() {
                     setJsonSanctionData(data.jsonSanctionData);
                     setJsonMemberData(data.jsonMemberData);
                     await fetchDiscordUser(data.jsonSanctionData);
+
+                    document.title = `Casier de ${JSON.parse(data.jsonMemberData).username} | Safia`;
+                    const metaDescription = `Casier de ${JSON.parse(data.jsonMemberData).username} - Votre description personnalisée ici`;
+                    const metaTags = document.getElementsByTagName('meta');
+
+                    for (let i = 0; i < metaTags.length; i++) {
+                        if (metaTags[i].getAttribute('name') === 'description') {
+                          metaTags[i].setAttribute('content', metaDescription);
+                          break;
+                        }
+                    }
 
                 } else {
                     console.error(data.error);
