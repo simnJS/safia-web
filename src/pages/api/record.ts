@@ -31,8 +31,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(404).json({ error: 'Member not found' })
     }
 
+    if(member.sanctions.length === 0) {
+        return res.status(404).json({ error: 'Member has no sanctions' })
+    }
+    
+
     const jsonSanctionData = JSON.stringify(member?.sanctions)
     const jsonMemberData = JSON.stringify(member)
+
+
 
     return res.status(200).json({ jsonSanctionData, jsonMemberData })
   } catch (error) {
