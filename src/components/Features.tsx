@@ -1,52 +1,40 @@
 import styles from '../styles/components/Features.module.css';
 
 export default function Features() {
-  return (
-    <section className={styles.features} id="features">
-    <div className={styles.container}>
-      <div className={styles.box}>
-        <h2>01</h2>
-        <h3>Un serveur sûr et propre</h3>
-        <p>
-          Garder votre serveur protégé grâce à toutes les commandes de modération et d'auto-modération
-        </p>
-      </div>
-      <div className={styles.box}>
-        <h2>02</h2>
-        <h3>Manipulation d'image</h3>
-        <p>
-          Amusez-vous avec la photo de profil de vos membres sur votre discord grâce à plusieurs commandes de manipulation d'images.
-        </p>
-      </div>
-      <div className={styles.box}>
-        <h2>03</h2>
-        <h3>Rapide comme l'éclair</h3>
-        <p>
-          N'attendez pas la moindre seconde avant que une commande vous réponde pour une expérience de folie.
-        </p>
-      </div>
-      <div className={styles.box}>
-        <h2>04</h2>
-        <h3>Statistique</h3>
-        <p>
-          Obtenez un maximum de statistiques sur votre serveur et les membres de votre serveur.
-        </p>
-      </div>
-      <div className={styles.box}>
-        <h2>05</h2>
-        <h3>Ne vous ennuyez plus</h3>
-        <p>
-          Amusez-vous avec toutes les commandes fun que le bot dispose.
-        </p>
-      </div>
-      <div className={styles.box}>
-        <h2>06</h2>
-        <h3>Configuration simple</h3>
-        <p>
-          Ne vous torturez plus à configurer votre bot tout est configurable via de simples commandes.
-        </p>
-      </div>
-    </div>
-  </section>
-  );
+    return (
+        <section className={styles.features} id="features">
+            <div className={styles.container}>
+                <div className={styles.box}>
+                    <h2>01</h2>
+                    <h3>Modération avancée et sécurisée</h3>
+                    <p>Des commandes de modération puissantes et un système d'auto-modération pour maintenir votre serveur sûr et propre.</p>
+                </div>
+                <div className={styles.box}>
+                    <h2>02</h2>
+                    <h3>Système d'XP personnalisable</h3>
+                    <p>Récompensez l'activité de vos membres avec un système d'XP entièrement configurable, permettant des rôles, des privilèges et des récompenses spéciales.</p>
+                </div>
+                <div className={styles.box}>
+                    <h2>03</h2>
+                    <h3>Protection contre le spam et les trolls</h3>
+                    <p>Détectez et bloquez automatiquement les comportements indésirables tels que le spam, les liens suspects et les messages offensants.</p>
+                </div>
+                <div className={styles.box}>
+                    <h2>04</h2>
+                    <h3>Configuration personnalisée</h3>
+                    <p>Personnalisez le comportement du bot selon vos préférences, y compris les préfixes de commande, les autorisations des rôles et les messages de bienvenue.</p>
+                </div>
+                <div className={styles.box}>
+                    <h2>05</h2>
+                    <h3>Statistiques du serveur</h3>
+                    <p>Obtenez des informations détaillées sur l'activité de votre serveur, y compris le nombre de membres, les messages envoyés et les pics d'activité.</p>
+                </div>
+                <div className={styles.box}>
+                    <h2>06</h2>
+                    <h3>Support réactif</h3>
+                    <p>Bénéficiez d'une assistance rapide et efficace en cas de problème ou de question, avec une équipe de support dédiée.</p>
+                </div>
+            </div>
+        </section>
+    );
 }
